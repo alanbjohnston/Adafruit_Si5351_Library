@@ -525,6 +525,22 @@ err_t Adafruit_SI5351::enableOutputs(bool enabled) {
   return ERROR_NONE;
 }
 
+err_t Adafruit_SI5351::enableOutputOnly(int clock) {
+  /* Make sure we've called init first */
+    
+  byte enabled = 1;
+    
+  enabled << clock;
+      
+  ASSERT(m_si5351Config.initialised, ERROR_DEVICENOTINITIALISED);
+
+  /* Enabled desired output (see Register 3) */
+  ASSERT_STATUS(
+      write8(SI5351_REGISTER_3_OUTPUT_ENABLE_CONTROL, enabled));
+
+  return ERROR_NONE;
+}
+
 /**************************************************************************/
 /*!
     @brief  Enables or disables spread spectrum
