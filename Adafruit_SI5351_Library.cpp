@@ -57,7 +57,7 @@
 #endif
 #include <stdlib.h>
 
-#include <Adafruit_SI5351.h>
+#include <Adafruit_SI5351_Library.h>
 
 /**************************************************************************/
 /*!
