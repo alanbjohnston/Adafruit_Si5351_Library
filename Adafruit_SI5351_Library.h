@@ -22,19 +22,19 @@
 /* Test setup from SI5351 ClockBuilder
  * -----------------------------------
  * XTAL:      25     MHz
- * Channel 0: 120.00 MHz
- * Channel 1: 12.00  MHz
- * Channel 2: 13.56  MHz
+ * Channel 0: 144.967 MHz
+ * Channel 1: 144.967  MHz
+ * Channel 2: 0  MHz
  */
 static const uint8_t m_si5351_regs_15to92_149to170[100][2] = {
     {15, 0x00}, /* Input source = crystal for PLLA and PLLB */
-    {16, 0x4F}, /* CLK0 Control: 8mA drive, Multisynth 0 as CLK0 source, Clock
+    {16, 0x5F}, /* CLK0 Control: 8mA drive, Multisynth 0 as CLK0 source, Clock
                    not inverted, Source = PLLA, Multisynth 0 in integer mode,
                    clock powered up */
-    {17, 0x4F}, /* CLK1 Control: 8mA drive, Multisynth 1 as CLK1 source, Clock
+    {17, 0xA3}, /* CLK1 Control: 8mA drive, Multisynth 1 as CLK1 source, Clock
                    not inverted, Source = PLLA, Multisynth 1 in integer mode,
                    clock powered up */
-    {18, 0x6F}, /* CLK2 Control: 8mA drive, Multisynth 2 as CLK2 source, Clock
+    {18, 0x4F}, /* CLK2 Control: 8mA drive, Multisynth 2 as CLK2 source, Clock
                    not inverted, Source = PLLB, Multisynth 2 in integer mode,
                    clock powered up */
     {19, 0x80}, /* CLK3 Control: Not used ... clock powered down */
@@ -45,23 +45,23 @@ static const uint8_t m_si5351_regs_15to92_149to170[100][2] = {
     {24, 0x00}, /* Clock disable state 0..3 (low when disabled) */
     {25, 0x00}, /* Clock disable state 4..7 (low when disabled) */
     /* PLL_A Setup */
-    {26, 0x00},
-    {27, 0x05},
+    {26, 0xE6},
+    {27, 0xB2},
     {28, 0x00},
-    {29, 0x0C},
-    {30, 0x66},
-    {31, 0x00},
-    {32, 0x00},
-    {33, 0x02},
+    {29, 0x0F},
+    {30, 0x65},
+    {31, 0xE5},
+    {32, 0x9A},
+    {33, 0x46},
     /* PLL_B Setup */
-    {34, 0x02},
-    {35, 0x71},
+    {34, 0x00},
+    {35, 0x00},
     {36, 0x00},
-    {37, 0x0C},
-    {38, 0x1A},
+    {37, 0x00},
+    {38, 0x00},
     {39, 0x00},
     {40, 0x00},
-    {41, 0x86},
+    {41, 0x00},
     /* Multisynth Setup */
     {42, 0x00},
     {43, 0x01},
@@ -72,9 +72,9 @@ static const uint8_t m_si5351_regs_15to92_149to170[100][2] = {
     {48, 0x00},
     {49, 0x00},
     {50, 0x00},
-    {51, 0x01},
+    {51, 0x00},
     {52, 0x00},
-    {53, 0x1C},
+    {53, 0x00},
     {54, 0x00},
     {55, 0x00},
     {56, 0x00},
@@ -82,7 +82,7 @@ static const uint8_t m_si5351_regs_15to92_149to170[100][2] = {
     {58, 0x00},
     {59, 0x01},
     {60, 0x00},
-    {61, 0x18},
+    {61, 0x01},
     {62, 0x00},
     {63, 0x00},
     {64, 0x00},
