@@ -484,6 +484,8 @@ err_t Adafruit_SI5351::setupMultisynth(uint8_t output, si5351PLL_t pllSource,
 
   /* Configure the clk control and enable the output */
   /* TODO: Check if the clk control byte needs to be updated. */
+  uint8_t clkControlReg_inv = 0x1F; /* 8mA drive strength, MS0 as CLK0 source, Clock
+                                   inverted, powered up */
   uint8_t clkControlReg = 0x0F; /* 8mA drive strength, MS0 as CLK0 source, Clock
                                    not inverted, powered up */
   if (pllSource == SI5351_PLL_B)
@@ -495,7 +497,7 @@ err_t Adafruit_SI5351::setupMultisynth(uint8_t output, si5351PLL_t pllSource,
     ASSERT_STATUS(write8(SI5351_REGISTER_16_CLK0_CONTROL, clkControlReg));
     break;
   case 1:
-    ASSERT_STATUS(write8(SI5351_REGISTER_17_CLK1_CONTROL, clkControlReg));
+    ASSERT_STATUS(write8(SI5351_REGISTER_17_CLK1_CONTROL, clkControlReg_inv));  // clock 1 is phase inverted
     break;
   case 2:
     ASSERT_STATUS(write8(SI5351_REGISTER_18_CLK2_CONTROL, clkControlReg));
