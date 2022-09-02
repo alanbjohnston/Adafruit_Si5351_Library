@@ -285,6 +285,7 @@ public:
 
   err_t enableSpreadSpectrum(bool enabled);
   err_t enableOutputs(bool enabled);
+  err_t enableOutputOnly(int clock);    
   /*!
    * @param output Enables or disables output
    * @param div Set of output divider values (2^n, n=1..7)
