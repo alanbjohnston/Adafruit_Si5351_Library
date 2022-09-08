@@ -167,7 +167,7 @@ err_t Adafruit_SI5351::setClockBuilderData(void) {
   ASSERT_STATUS(write8(SI5351_REGISTER_177_PLL_RESET, 0xAC));
 
   /* Enabled desired outputs (see Register 3) */
-  ASSERT_STATUS(write8(SI5351_REGISTER_3_OUTPUT_ENABLE_CONTROL, 0x00));
+  ASSERT_STATUS(write8(SI5351_REGISTER_3_OUTPUT_ENABLE_CONTROL, 0x03));
 
   return ERROR_NONE;
 }
