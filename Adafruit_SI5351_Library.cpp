@@ -528,10 +528,10 @@ err_t Adafruit_SI5351::enableOutputs(bool enabled) {
 err_t Adafruit_SI5351::enableOutputOnly(int clock) {
   /* Make sure we've called init first */
     
-  byte enabled = 1;
+  byte enabled = 2 ^ clock;
   Serial.println(enabled, HEX);  
-  enabled << clock;
-  Serial.println(enabled,HEX);
+//  enabled << clock;
+//  Serial.println(enabled,HEX);
       
   ASSERT(m_si5351Config.initialised, ERROR_DEVICENOTINITIALISED);
 
