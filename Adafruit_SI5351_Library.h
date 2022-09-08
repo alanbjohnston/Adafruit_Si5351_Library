@@ -42,7 +42,7 @@ static const uint8_t m_si5351_regs_15to92_149to170[100][2] = {
     {21, 0x80}, /* CLK5 Control: Not used ... clock powered down */
     {22, 0x80}, /* CLK6 Control: Not used ... clock powered down */
     {23, 0x80}, /* CLK7 Control: Not used ... clock powered down */
-    {24, 0x22}, /* Clock disable state 0..3 (High Z when disabled) */
+    {24, 0x00}, /* Clock disable state 0..3 (High Z when disabled) */
     {25, 0x00}, /* Clock disable state 4..7 (low when disabled) */
     /* PLL_A Setup */
     {26, 0xE6},
