@@ -140,10 +140,10 @@ static const uint8_t bpsk_si5351_regs_15to92_149to170[100][2] = {
 
 static const uint8_t fsk_si5351_regs_15to92_149to170[100][2] = {
     {15, 0x00}, /* Input source = crystal for PLLA and PLLB */
-    {16, 0x5F}, /* CLK0 Control: 8mA drive, Multisynth 0 as CLK0 source, Clock
+    {16, 0x6F}, /* CLK0 Control: 8mA drive, Multisynth 0 as CLK0 source, Clock
                    not inverted, Source = PLLA, Multisynth 0 in integer mode,
                    clock powered up */
-    {17, 0xA3}, /* CLK1 Control: 8mA drive, Multisynth 1 as CLK1 source, Clock
+    {17, 0x80}, /* CLK1 Control: 8mA drive, Multisynth 1 as CLK1 source, Clock
                    not inverted, Source = PLLA, Multisynth 1 in integer mode,
                    clock powered up */
     {18, 0x4F}, /* CLK2 Control: 8mA drive, Multisynth 2 as CLK2 source, Clock
@@ -154,7 +154,7 @@ static const uint8_t fsk_si5351_regs_15to92_149to170[100][2] = {
     {21, 0x80}, /* CLK5 Control: Not used ... clock powered down */
     {22, 0x80}, /* CLK6 Control: Not used ... clock powered down */
     {23, 0x80}, /* CLK7 Control: Not used ... clock powered down */
-    {24, 0x00}, /* Clock disable state 0..3 (High Z when disabled) */
+    {24, 0x22}, /* Clock disable state 0..3 (High Z when disabled) */
     {25, 0x00}, /* Clock disable state 4..7 (low when disabled) */
     /* PLL_A Setup */
     {26, 0xE6},
@@ -166,14 +166,14 @@ static const uint8_t fsk_si5351_regs_15to92_149to170[100][2] = {
     {32, 0x9A},
     {33, 0x46},
     /* PLL_B Setup */
-    {34, 0x00},
-    {35, 0x00},
+    {34, 0xE6},
+    {35, 0xB2},
     {36, 0x00},
-    {37, 0x00},
-    {38, 0x00},
-    {39, 0x00},
-    {40, 0x00},
-    {41, 0x00},
+    {37, 0x07},
+    {38, 0x65},
+    {39, 0xE6},
+    {40, 0xF9},
+    {41, 0xC6},
     /* Multisynth Setup */
     {42, 0x00},
     {43, 0x01},
