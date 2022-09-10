@@ -151,7 +151,7 @@ err_t Adafruit_SI5351::setClockBPSK(void) {
   uint16_t i = 0;
 
   /* Make sure we've called init first */
-  ASSERT(bpsk_si5351Config.initialised, ERROR_DEVICENOTINITIALISED);
+  ASSERT(m_si5351Config.initialised, ERROR_DEVICENOTINITIALISED);
 
   /* Disable all outputs setting CLKx_DIS high */
   ASSERT_STATUS(write8(SI5351_REGISTER_3_OUTPUT_ENABLE_CONTROL, 0xFF));
