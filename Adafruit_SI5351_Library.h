@@ -169,11 +169,11 @@ static const uint8_t fsk_si5351_regs_15to92_149to170[100][2] = {
     {34, 0xE6},
     {35, 0xB2},
     {36, 0x00},
-    {37, 0x07},
+    {37, 0x0F},
     {38, 0x65},
-    {39, 0xE6},
-    {40, 0xF9},
-    {41, 0xC6},
+    {39, 0xE8},
+    {40, 0x59},
+    {41, 0x46},
     /* Multisynth Setup */
     {42, 0x00},
     {43, 0x01},
@@ -249,7 +249,6 @@ static const uint8_t fsk_si5351_regs_15to92_149to170[100][2] = {
     {168, 0x00},
     {169, 0x00},
     {170, 0x00}};
-
 
 /* See http://www.silabs.com/Support%20Documents/TechnicalDocs/AN619.pdf for
  * registers 26..41 */
