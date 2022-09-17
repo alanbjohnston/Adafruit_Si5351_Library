@@ -146,7 +146,7 @@ static const uint8_t fsk_si5351_regs_15to92_149to170[100][2] = {
     {17, 0x4f}, /* CLK1 Control: 8mA drive, Multisynth 1 as CLK1 source, Clock
                    not inverted, Source = PLLA, Multisynth 1 in integer mode,
                    clock powered up */
-    {18, 0x83}, /* CLK2 Control: 8mA drive, Multisynth 2 as CLK2 source, Clock
+    {18, 0xA3}, /* CLK2 Control: 8mA drive, Multisynth 2 as CLK2 source, Clock
                    not inverted, Source = PLLB, Multisynth 2 in integer mode,
                    clock powered up */
     {19, 0x80}, /* CLK3 Control: Not used ... clock powered down */
@@ -162,9 +162,9 @@ static const uint8_t fsk_si5351_regs_15to92_149to170[100][2] = {
     {28, 0x00},
     {29, 0x0F},
     {30, 0x65},
-    {31, 0xE5},
-    {32, 0x9A},
-    {33, 0x46},
+    {31, 0xE6},
+    {32, 0x84},
+    {33, 0xC6},
     /* PLL_B Setup */
     {34, 0xE6},
     {35, 0xB2},
