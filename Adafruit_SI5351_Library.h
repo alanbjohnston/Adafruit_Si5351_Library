@@ -140,10 +140,10 @@ static const uint8_t bpsk_si5351_regs_15to92_149to170[100][2] = {
 
 static const uint8_t fsk_si5351_regs_15to92_149to170[100][2] = {
     {15, 0x00}, /* Input source = crystal for PLLA and PLLB */
-    {16, 0x4F}, /* CLK0 Control: 8mA drive, Multisynth 0 as CLK0 source, Clock
+    {16, 0x6F}, /* CLK0 Control: 8mA drive, Multisynth 0 as CLK0 source, Clock
                    not inverted, Source = PLLA, Multisynth 0 in integer mode,
                    clock powered up */
-    {17, 0x6f}, /* CLK1 Control: 8mA drive, Multisynth 1 as CLK1 source, Clock
+    {17, 0x4f}, /* CLK1 Control: 8mA drive, Multisynth 1 as CLK1 source, Clock
                    not inverted, Source = PLLA, Multisynth 1 in integer mode,
                    clock powered up */
     {18, 0x83}, /* CLK2 Control: 8mA drive, Multisynth 2 as CLK2 source, Clock
@@ -171,8 +171,8 @@ static const uint8_t fsk_si5351_regs_15to92_149to170[100][2] = {
     {36, 0x00},
     {37, 0x0F},
     {38, 0x65},
-    {39, 0xE8},
-    {40, 0x59},
+    {39, 0xE6},
+    {40, 0x0F},
     {41, 0x46},
     /* Multisynth Setup */
     {42, 0x00},
