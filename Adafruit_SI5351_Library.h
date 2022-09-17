@@ -154,7 +154,7 @@ static const uint8_t fsk_si5351_regs_15to92_149to170[100][2] = {
     {21, 0x80}, /* CLK5 Control: Not used ... clock powered down */
     {22, 0x80}, /* CLK6 Control: Not used ... clock powered down */
     {23, 0x80}, /* CLK7 Control: Not used ... clock powered down */
-    {24, 0x22}, /* Clock disable state 0..3 (High Z when disabled) */
+    {24, 0x2A}, /* Clock disable state 0..3 (High Z when disabled) */
     {25, 0x00}, /* Clock disable state 4..7 (low when disabled) */
     /* PLL_A Setup */
     {26, 0xE6},
@@ -184,17 +184,17 @@ static const uint8_t fsk_si5351_regs_15to92_149to170[100][2] = {
     {48, 0x00},
     {49, 0x00},
     {50, 0x00},
-    {51, 0x00},
+    {51, 0x01},
     {52, 0x00},
-    {53, 0x00},
+    {53, 0x01},
     {54, 0x00},
     {55, 0x00},
     {56, 0x00},
     {57, 0x00},
     {58, 0x00},
-    {59, 0x01},
+    {59, 0x00},
     {60, 0x00},
-    {61, 0x01},
+    {61, 0x00},
     {62, 0x00},
     {63, 0x00},
     {64, 0x00},
