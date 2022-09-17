@@ -163,7 +163,7 @@ static const uint8_t fsk_si5351_regs_15to92_149to170[100][2] = {
     {29, 0x0F},
     {30, 0x65},
     {31, 0xE5},
-    {32, 0x9A},
+    {32, 0xC9},
     {33, 0x46},
     /* PLL_B Setup */
     {34, 0xE6},
