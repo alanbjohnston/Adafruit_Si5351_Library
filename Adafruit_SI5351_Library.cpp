@@ -547,10 +547,10 @@ err_t Adafruit_SI5351::enableOutputs(bool enabled) {
   ASSERT(m_si5351Config.initialised, ERROR_DEVICENOTINITIALISED);
 
   /* Enabled desired outputs (see Register 3) */
-  //ASSERT_STATUS(
-  //    write8(SI5351_REGISTER_3_OUTPUT_ENABLE_CONTROL, enabled ? 0x00 : 0xFF));
-  Serial.println(
+  ASSERT_STATUS(
       write8(SI5351_REGISTER_3_OUTPUT_ENABLE_CONTROL, enabled ? 0x00 : 0xFF));
+  //Serial.println(
+ //     write8(SI5351_REGISTER_3_OUTPUT_ENABLE_CONTROL, enabled ? 0x00 : 0xFF));
     
   return ERROR_NONE;
 }
