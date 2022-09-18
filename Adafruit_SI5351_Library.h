@@ -22,19 +22,19 @@
 /* Test setup from SI5351 ClockBuilder
  * -----------------------------------
  * XTAL:      25     MHz
- * Channel 0: 120.00 MHz
- * Channel 1: 12.00  MHz
- * Channel 2: 13.56  MHz
+ * Channel 0: 144.967 MHz
+ * Channel 1: 144.967  MHz
+ * Channel 2: 0  MHz
  */
-static const uint8_t m_si5351_regs_15to92_149to170[100][2] = {
+static const uint8_t bpsk_si5351_regs_15to92_149to170[100][2] = {
     {15, 0x00}, /* Input source = crystal for PLLA and PLLB */
-    {16, 0x4F}, /* CLK0 Control: 8mA drive, Multisynth 0 as CLK0 source, Clock
+    {16, 0x5F}, /* CLK0 Control: 8mA drive, Multisynth 0 as CLK0 source, Clock
                    not inverted, Source = PLLA, Multisynth 0 in integer mode,
                    clock powered up */
-    {17, 0x4F}, /* CLK1 Control: 8mA drive, Multisynth 1 as CLK1 source, Clock
+    {17, 0xA3}, /* CLK1 Control: 8mA drive, Multisynth 1 as CLK1 source, Clock
                    not inverted, Source = PLLA, Multisynth 1 in integer mode,
                    clock powered up */
-    {18, 0x6F}, /* CLK2 Control: 8mA drive, Multisynth 2 as CLK2 source, Clock
+    {18, 0x4F}, /* CLK2 Control: 8mA drive, Multisynth 2 as CLK2 source, Clock
                    not inverted, Source = PLLB, Multisynth 2 in integer mode,
                    clock powered up */
     {19, 0x80}, /* CLK3 Control: Not used ... clock powered down */
@@ -42,26 +42,138 @@ static const uint8_t m_si5351_regs_15to92_149to170[100][2] = {
     {21, 0x80}, /* CLK5 Control: Not used ... clock powered down */
     {22, 0x80}, /* CLK6 Control: Not used ... clock powered down */
     {23, 0x80}, /* CLK7 Control: Not used ... clock powered down */
-    {24, 0x00}, /* Clock disable state 0..3 (low when disabled) */
+    {24, 0x00}, /* Clock disable state 0..3 (High Z when disabled) */
     {25, 0x00}, /* Clock disable state 4..7 (low when disabled) */
     /* PLL_A Setup */
-    {26, 0x00},
-    {27, 0x05},
+    {26, 0xE6},
+    {27, 0xB2},
     {28, 0x00},
-    {29, 0x0C},
-    {30, 0x66},
-    {31, 0x00},
-    {32, 0x00},
-    {33, 0x02},
+    {29, 0x0F},
+    {30, 0x65},
+    {31, 0xE5},
+    {32, 0x9A},
+    {33, 0x46},
     /* PLL_B Setup */
-    {34, 0x02},
-    {35, 0x71},
+    {34, 0x00},
+    {35, 0x00},
     {36, 0x00},
-    {37, 0x0C},
-    {38, 0x1A},
+    {37, 0x00},
+    {38, 0x00},
     {39, 0x00},
     {40, 0x00},
-    {41, 0x86},
+    {41, 0x00},
+    /* Multisynth Setup */
+    {42, 0x00},
+    {43, 0x01},
+    {44, 0x00},
+    {45, 0x01},
+    {46, 0x00},
+    {47, 0x00},
+    {48, 0x00},
+    {49, 0x00},
+    {50, 0x00},
+    {51, 0x00},
+    {52, 0x00},
+    {53, 0x00},
+    {54, 0x00},
+    {55, 0x00},
+    {56, 0x00},
+    {57, 0x00},
+    {58, 0x00},
+    {59, 0x01},
+    {60, 0x00},
+    {61, 0x01},
+    {62, 0x00},
+    {63, 0x00},
+    {64, 0x00},
+    {65, 0x00},
+    {66, 0x00},
+    {67, 0x00},
+    {68, 0x00},
+    {69, 0x00},
+    {70, 0x00},
+    {71, 0x00},
+    {72, 0x00},
+    {73, 0x00},
+    {74, 0x00},
+    {75, 0x00},
+    {76, 0x00},
+    {77, 0x00},
+    {78, 0x00},
+    {79, 0x00},
+    {80, 0x00},
+    {81, 0x00},
+    {82, 0x00},
+    {83, 0x00},
+    {84, 0x00},
+    {85, 0x00},
+    {86, 0x00},
+    {87, 0x00},
+    {88, 0x00},
+    {89, 0x00},
+    {90, 0x00},
+    {91, 0x00},
+    {92, 0x00},
+    /* Misc Config Register */
+    {149, 0x00},
+    {150, 0x00},
+    {151, 0x00},
+    {152, 0x00},
+    {153, 0x00},
+    {154, 0x00},
+    {155, 0x00},
+    {156, 0x00},
+    {157, 0x00},
+    {158, 0x00},
+    {159, 0x00},
+    {160, 0x00},
+    {161, 0x00},
+    {162, 0x00},
+    {163, 0x00},
+    {164, 0x00},
+    {165, 0x00},
+    {166, 0x00},
+    {167, 0x00},
+    {168, 0x00},
+    {169, 0x00},
+    {170, 0x00}};
+
+static const uint8_t fsk_si5351_regs_15to92_149to170[100][2] = {
+    {15, 0x00}, /* Input source = crystal for PLLA and PLLB */
+    {16, 0x6F}, /* CLK0 Control: 8mA drive, Multisynth 0 as CLK0 source, Clock
+                   not inverted, Source = PLLA, Multisynth 0 in integer mode,
+                   clock powered up */
+    {17, 0x4f}, /* CLK1 Control: 8mA drive, Multisynth 1 as CLK1 source, Clock
+                   not inverted, Source = PLLA, Multisynth 1 in integer mode,
+                   clock powered up */
+    {18, 0xA3}, /* CLK2 Control: 8mA drive, Multisynth 2 as CLK2 source, Clock
+                   not inverted, Source = PLLB, Multisynth 2 in integer mode,
+                   clock powered up */
+    {19, 0x80}, /* CLK3 Control: Not used ... clock powered down */
+    {20, 0x80}, /* CLK4 Control: Not used ... clock powered down */
+    {21, 0x80}, /* CLK5 Control: Not used ... clock powered down */
+    {22, 0x80}, /* CLK6 Control: Not used ... clock powered down */
+    {23, 0x80}, /* CLK7 Control: Not used ... clock powered down */
+    {24, 0x2A}, /* Clock disable state 0..3 (High Z when disabled) */
+    {25, 0x00}, /* Clock disable state 4..7 (low when disabled) */
+    /* PLL_A Setup */
+    {26, 0xE6},
+    {27, 0xB2},
+    {28, 0x00},
+    {29, 0x0F},
+    {30, 0x65},
+    {31, 0xE6},
+    {32, 0x84},
+    {33, 0xC6},
+    /* PLL_B Setup */
+    {34, 0xE6},
+    {35, 0xB2},
+    {36, 0x00},
+    {37, 0x0F},
+    {38, 0x65},
+    {39, 0xE6},
+    {40, 0x0F},
+    {41, 0x46},
     /* Multisynth Setup */
     {42, 0x00},
     {43, 0x01},
@@ -74,15 +186,15 @@ static const uint8_t m_si5351_regs_15to92_149to170[100][2] = {
     {50, 0x00},
     {51, 0x01},
     {52, 0x00},
-    {53, 0x1C},
+    {53, 0x01},
     {54, 0x00},
     {55, 0x00},
     {56, 0x00},
     {57, 0x00},
     {58, 0x00},
-    {59, 0x01},
+    {59, 0x00},
     {60, 0x00},
-    {61, 0x18},
+    {61, 0x00},
     {62, 0x00},
     {63, 0x00},
     {64, 0x00},
@@ -274,7 +386,8 @@ public:
   Adafruit_SI5351(void); //!< SI5351 object
 
   err_t begin(TwoWire *theWire = &Wire); //!< @return ERROR_NONE
-  err_t setClockBuilderData(void);       //!< @return ERROR_NONE
+  err_t setClockBPSK(void);       //!< @return ERROR_NONE
+  err_t setClockFSK(void);       //!< @return ERROR_NONE    
   err_t setupPLL(si5351PLL_t pll, uint8_t mult, uint32_t num,
                  uint32_t denom);                   //!< @return ERROR_NONE
   err_t setupPLLInt(si5351PLL_t pll, uint8_t mult); //!< @return ERROR_NONE
@@ -285,6 +398,7 @@ public:
 
   err_t enableSpreadSpectrum(bool enabled);
   err_t enableOutputs(bool enabled);
+  err_t enableOutputOnly(int clock);    
   /*!
    * @param output Enables or disables output
    * @param div Set of output divider values (2^n, n=1..7)
