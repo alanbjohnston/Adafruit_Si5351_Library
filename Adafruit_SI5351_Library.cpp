@@ -128,6 +128,9 @@ err_t Adafruit_SI5351::begin(TwoWire *theWire) {
 
   /* All done! */
   m_si5351Config.initialised = true;
+    
+  Serial.begin(115200);
+  Serial.println("Starting Si5351 Library v0.2"); 
 
   return ERROR_NONE;
 }
