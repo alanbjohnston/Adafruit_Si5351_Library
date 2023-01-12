@@ -35,6 +35,6 @@ typedef enum {
       0x103, /**< Device timed out waiting for response (missing pullups?) */
   ERROR_I2C_TRANSACTION = 0x104, /**< Error during I2C read/write operation */
   /*=======================================================================*/
-} err_t;
+} err_t_;
 
 #endif
