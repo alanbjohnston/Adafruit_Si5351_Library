@@ -87,7 +87,7 @@ Adafruit_SI5351::Adafruit_SI5351(void) {
     @param  theWire The I2C (Wire) bus to use.
 */
 /**************************************************************************/
-err_t Adafruit_SI5351::begin(TwoWire *theWire) {
+err_t_ Adafruit_SI5351::begin(TwoWire *theWire) {
   /* Initialise I2C */
   if (i2c_dev)
     delete i2c_dev;
@@ -147,7 +147,7 @@ err_t Adafruit_SI5351::begin(TwoWire *theWire) {
     @note   This will overwrite all of the config registers!
 */
 /**************************************************************************/
-err_t Adafruit_SI5351::setClockBuilderData(void) {
+err_t_ Adafruit_SI5351::setClockBuilderData(void) {
   uint16_t i = 0;
 
   /* Make sure we've called init first */
@@ -182,7 +182,7 @@ err_t Adafruit_SI5351::setClockBuilderData(void) {
   @param  mult  The PLL integer multiplier (must be between 15 and 90)
 */
 /**************************************************************************/
-err_t Adafruit_SI5351::setupPLLInt(si5351PLL_t pll, uint8_t mult) {
+err_t_ Adafruit_SI5351::setupPLLInt(si5351PLL_t pll, uint8_t mult) {
   return setupPLL(pll, mult, 0, 1);
 }
 
@@ -216,7 +216,7 @@ err_t Adafruit_SI5351::setupPLLInt(si5351PLL_t pll, uint8_t mult) {
     See: http://www.silabs.com/Support%20Documents/TechnicalDocs/AN619.pdf
 */
 /**************************************************************************/
-err_t Adafruit_SI5351::setupPLL(si5351PLL_t pll, uint8_t mult, uint32_t num,
+err_t_ Adafruit_SI5351::setupPLL(si5351PLL_t pll, uint8_t mult, uint32_t num,
                                 uint32_t denom) {
   uint32_t P1; /* PLL config register P1 */
   uint32_t P2; /* PLL config register P2 */
@@ -310,12 +310,12 @@ err_t Adafruit_SI5351::setupPLL(si5351PLL_t pll, uint8_t mult, uint32_t num,
                       - SI5351_MULTISYNTH_DIV_8
 */
 /**************************************************************************/
-err_t Adafruit_SI5351::setupMultisynthInt(uint8_t output, si5351PLL_t pllSource,
+err_t_ Adafruit_SI5351::setupMultisynthInt(uint8_t output, si5351PLL_t pllSource,
                                           si5351MultisynthDiv_t div) {
   return setupMultisynth(output, pllSource, div, 0, 1);
 }
 
-err_t Adafruit_SI5351::setupRdiv(uint8_t output, si5351RDiv_t div) {
+err_t_ Adafruit_SI5351::setupRdiv(uint8_t output, si5351RDiv_t div) {
   ASSERT(output < 3, ERROR_INVALIDPARAMETER); /* Channel range */
 
   uint8_t Rreg, regval;
@@ -395,7 +395,7 @@ err_t Adafruit_SI5351::setupRdiv(uint8_t output, si5351RDiv_t div) {
             used, but this isn't currently implemented in the driver.
 */
 /**************************************************************************/
-err_t Adafruit_SI5351::setupMultisynth(uint8_t output, si5351PLL_t pllSource,
+err_t_ Adafruit_SI5351::setupMultisynth(uint8_t output, si5351PLL_t pllSource,
                                        uint32_t div, uint32_t num,
                                        uint32_t denom) {
   uint32_t P1; /* Multisynth config register P1 */
@@ -514,7 +514,7 @@ err_t Adafruit_SI5351::setupMultisynth(uint8_t output, si5351PLL_t pllSource,
     @return ERROR_NONE
 */
 /**************************************************************************/
-err_t Adafruit_SI5351::enableOutputs(bool enabled) {
+err_t_ Adafruit_SI5351::enableOutputs(bool enabled) {
   /* Make sure we've called init first */
   ASSERT(m_si5351Config.initialised, ERROR_DEVICENOTINITIALISED);
 
@@ -525,7 +525,7 @@ err_t Adafruit_SI5351::enableOutputs(bool enabled) {
   return ERROR_NONE;
 }
 
-err_t Adafruit_SI5351::enableOutputOnly(int clock) {
+err_t_ Adafruit_SI5351::enableOutputOnly(int clock) {
   /* Make sure we've called init first */
     
     byte enabled;
@@ -556,7 +556,7 @@ err_t Adafruit_SI5351::enableOutputOnly(int clock) {
     @return ERROR_NONE
 */
 /**************************************************************************/
-err_t Adafruit_SI5351::enableSpreadSpectrum(bool enabled) {
+err_t_ Adafruit_SI5351::enableSpreadSpectrum(bool enabled) {
   uint8_t regval;
   ASSERT_STATUS(read8(SI5351_REGISTER_149_SPREAD_SPECTRUM_PARAMETERS, &regval));
   if (enabled) {
@@ -578,7 +578,7 @@ err_t Adafruit_SI5351::enableSpreadSpectrum(bool enabled) {
     @brief  Writes a register and an 8 bit value over I2C
 */
 /**************************************************************************/
-err_t Adafruit_SI5351::write8(uint8_t reg, uint8_t value) {
+err_t_ Adafruit_SI5351::write8(uint8_t reg, uint8_t value) {
   uint8_t buffer[2] = {reg, value};
   if (i2c_dev->write(buffer, 2)) {
     return ERROR_NONE;
@@ -587,7 +587,7 @@ err_t Adafruit_SI5351::write8(uint8_t reg, uint8_t value) {
   }
 }
 
-err_t Adafruit_SI5351::writeN(uint8_t *data, uint8_t n) {
+err_t_ Adafruit_SI5351::writeN(uint8_t *data, uint8_t n) {
   if (i2c_dev->write(data, n)) {
     return ERROR_NONE;
   } else {
@@ -600,7 +600,7 @@ err_t Adafruit_SI5351::writeN(uint8_t *data, uint8_t n) {
     @brief  Reads an 8 bit value over I2C
 */
 /**************************************************************************/
-err_t Adafruit_SI5351::read8(uint8_t reg, uint8_t *value) {
+err_t_ Adafruit_SI5351::read8(uint8_t reg, uint8_t *value) {
   if (i2c_dev->write_then_read(&reg, 1, value, 1)) {
     return ERROR_NONE;
   } else {
