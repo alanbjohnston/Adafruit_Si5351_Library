@@ -87,7 +87,7 @@ Adafruit_SI5351::Adafruit_SI5351(void) {
     @param  theWire The I2C (Wire) bus to use.
 */
 /**************************************************************************/
-err_t Adafruit_SI5351::begin(TwoWire *theWire) {
+err_t_ Adafruit_SI5351::begin(TwoWire *theWire) {
   /* Initialise I2C */
   if (i2c_dev)
     delete i2c_dev;
@@ -150,7 +150,7 @@ err_t Adafruit_SI5351::begin(TwoWire *theWire) {
     @note   This will overwrite all of the config registers!
 */
 /**************************************************************************/
-err_t Adafruit_SI5351::setClockBPSK(void) {
+err_t_ Adafruit_SI5351::setClockBPSK(void) {
   uint16_t i = 0;
 
   /* Make sure we've called init first */
@@ -175,7 +175,7 @@ err_t Adafruit_SI5351::setClockBPSK(void) {
   return ERROR_NONE;
 }
 
-err_t Adafruit_SI5351::setClockFSK(void) {
+err_t_ Adafruit_SI5351::setClockFSK(void) {
   uint16_t i = 0;
 
   /* Make sure we've called init first */
@@ -210,7 +210,7 @@ err_t Adafruit_SI5351::setClockFSK(void) {
   @param  mult  The PLL integer multiplier (must be between 15 and 90)
 */
 /**************************************************************************/
-err_t Adafruit_SI5351::setupPLLInt(si5351PLL_t pll, uint8_t mult) {
+err_t_ Adafruit_SI5351::setupPLLInt(si5351PLL_t pll, uint8_t mult) {
   return setupPLL(pll, mult, 0, 1);
 }
 
@@ -244,7 +244,7 @@ err_t Adafruit_SI5351::setupPLLInt(si5351PLL_t pll, uint8_t mult) {
     See: http://www.silabs.com/Support%20Documents/TechnicalDocs/AN619.pdf
 */
 /**************************************************************************/
-err_t Adafruit_SI5351::setupPLL(si5351PLL_t pll, uint8_t mult, uint32_t num,
+err_t_ Adafruit_SI5351::setupPLL(si5351PLL_t pll, uint8_t mult, uint32_t num,
                                 uint32_t denom) {
   uint32_t P1; /* PLL config register P1 */
   uint32_t P2; /* PLL config register P2 */
@@ -338,7 +338,7 @@ err_t Adafruit_SI5351::setupPLL(si5351PLL_t pll, uint8_t mult, uint32_t num,
                       - SI5351_MULTISYNTH_DIV_8
 */
 /**************************************************************************/
-err_t Adafruit_SI5351::setupMultisynthInt(uint8_t output, si5351PLL_t pllSource,
+err_t_ Adafruit_SI5351::setupMultisynthInt(uint8_t output, si5351PLL_t pllSource,
                                           si5351MultisynthDiv_t div) {
   return setupMultisynth(output, pllSource, div, 0, 1);
 }
