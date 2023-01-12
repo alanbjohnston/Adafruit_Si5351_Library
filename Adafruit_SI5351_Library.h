@@ -385,33 +385,33 @@ class Adafruit_SI5351 {
 public:
   Adafruit_SI5351(void); //!< SI5351 object
 
-  err_t begin(TwoWire *theWire = &Wire); //!< @return ERROR_NONE
-  err_t setClockBPSK(void);       //!< @return ERROR_NONE
-  err_t setClockFSK(void);       //!< @return ERROR_NONE    
-  err_t setupPLL(si5351PLL_t pll, uint8_t mult, uint32_t num,
+  err_t_ begin(TwoWire *theWire = &Wire); //!< @return ERROR_NONE
+  err_t_ setClockBPSK(void);       //!< @return ERROR_NONE
+  err_t_ setClockFSK(void);       //!< @return ERROR_NONE    
+  err_t_ setupPLL(si5351PLL_t pll, uint8_t mult, uint32_t num,
                  uint32_t denom);                   //!< @return ERROR_NONE
-  err_t setupPLLInt(si5351PLL_t pll, uint8_t mult); //!< @return ERROR_NONE
-  err_t setupMultisynth(uint8_t output, si5351PLL_t pllSource, uint32_t div,
+  err_t_ setupPLLInt(si5351PLL_t pll, uint8_t mult); //!< @return ERROR_NONE
+  err_t_ setupMultisynth(uint8_t output, si5351PLL_t pllSource, uint32_t div,
                         uint32_t num, uint32_t denom); //!< @return ERROR_NONE
-  err_t setupMultisynthInt(uint8_t output, si5351PLL_t pllSource,
+  err_t_ setupMultisynthInt(uint8_t output, si5351PLL_t pllSource,
                            si5351MultisynthDiv_t div); //!< @return ERROR_NONE
 
-  err_t enableSpreadSpectrum(bool enabled);
-  err_t enableOutputs(bool enabled);
-  err_t enableOutputOnly(int clock);    
+  err_t_ enableSpreadSpectrum(bool enabled);
+  err_t_ enableOutputs(bool enabled);
+  err_t_ enableOutputOnly(int clock);    
   /*!
    * @param output Enables or disables output
    * @param div Set of output divider values (2^n, n=1..7)
    */
-  err_t setupRdiv(uint8_t output, si5351RDiv_t div); //!< @return ERROR_NONE
+  err_t_ setupRdiv(uint8_t output, si5351RDiv_t div); //!< @return ERROR_NONE
 
 private:
   si5351Config_t m_si5351Config;
 
   Adafruit_I2CDevice *i2c_dev = NULL; ///< Pointer to I2C bus interface
-  err_t write8(uint8_t reg, uint8_t value);
-  err_t read8(uint8_t reg, uint8_t *value);
-  err_t writeN(uint8_t *data, uint8_t n);
+  err_t_ write8(uint8_t reg, uint8_t value);
+  err_t_ read8(uint8_t reg, uint8_t *value);
+  err_t_ writeN(uint8_t *data, uint8_t n);
 
   uint8_t lastRdivValue[3];
 };
