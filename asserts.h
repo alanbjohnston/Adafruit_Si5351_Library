@@ -43,7 +43,7 @@
 /**************************************************************************/
 #define ASSERT_STATUS(sts)                                                     \
   do {                                                                         \
-    err_t status = (sts);                                                      \
+    err_t_ status = (sts);                                                      \
     if (ERROR_NONE != status) {                                                \
       return status;                                                           \
     }                                                                          \
