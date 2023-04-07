@@ -130,7 +130,7 @@ err_t_ Adafruit_SI5351::begin(TwoWire *theWire) {
   m_si5351Config.initialised = true;
     
   Serial.begin(115200);
-  Serial.println("Starting Si5351 Library v0.2"); 
+  Serial.println("Starting Si5351 Library v0.4"); 
 
   return ERROR_NONE;
 }
@@ -150,7 +150,7 @@ err_t_ Adafruit_SI5351::begin(TwoWire *theWire) {
     @note   This will overwrite all of the config registers!
 */
 /**************************************************************************/
-err_t_ Adafruit_SI5351::setClockBPSK(void) {
+err_t_ Adafruit_SI5351::setClockBPSK(int freq_offset) {
   uint16_t i = 0;
 
   /* Make sure we've called init first */
@@ -175,7 +175,7 @@ err_t_ Adafruit_SI5351::setClockBPSK(void) {
   return ERROR_NONE;
 }
 
-err_t_ Adafruit_SI5351::setClockFSK(void) {
+err_t_ Adafruit_SI5351::setClockFSK(int freq_offset) {
   uint16_t i = 0;
 
   /* Make sure we've called init first */
