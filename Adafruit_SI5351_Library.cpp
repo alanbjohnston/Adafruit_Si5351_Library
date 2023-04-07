@@ -207,7 +207,7 @@ err_t_ Adafruit_SI5351::setClockFSK(int freq_offset) {
     ASSERT_STATUS(write8(fsk_15k_si5351_regs_15to92_149to170[i][0],
                          fsk_15k_si5351_regs_15to92_149to170[i][1]));      
   }
-
+  }
   /* Apply soft reset */
   ASSERT_STATUS(write8(SI5351_REGISTER_177_PLL_RESET, 0xAC));
 
