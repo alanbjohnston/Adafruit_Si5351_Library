@@ -168,7 +168,8 @@ err_t_ Adafruit_SI5351::setClockBPSK(int freq_offset) {
                          bpsk_si5351_regs_15to92_149to170[i][1]));
   }
   } else {
-    
+      
+  Serial.println("BPSK with frequency offset");   
   for (i = 0; i < sizeof(bpsk_15k_si5351_regs_15to92_149to170) / 2; i++) {
     ASSERT_STATUS(write8(bpsk_15k_ssi5351_regs_15to92_149to170[i][0],
                          bpsk_15k_ssi5351_regs_15to92_149to170[i][1]));
@@ -201,6 +202,7 @@ err_t_ Adafruit_SI5351::setClockFSK(int freq_offset) {
                          fsk_si5351_regs_15to92_149to170[i][1]));
   }
   } else {
+  Serial.println("FSK with frequency offset");         
   for (i = 0; i < sizeof(fsk_15k_si5351_regs_15to92_149to170) / 2; i++) {
     ASSERT_STATUS(write8(fsk_15k_si5351_regs_15to92_149to170[i][0],
                          fsk_15k_si5351_regs_15to92_149to170[i][1]));      
