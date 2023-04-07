@@ -386,8 +386,8 @@ public:
   Adafruit_SI5351(void); //!< SI5351 object
 
   err_t begin(TwoWire *theWire = &Wire); //!< @return ERROR_NONE
-  err_t setClockBPSK(void);       //!< @return ERROR_NONE
-  err_t setClockFSK(void);       //!< @return ERROR_NONE    
+  err_t setClockBPSK(int freq_offset);       //!< @return ERROR_NONE
+  err_t setClockFSK(int freq_offset);       //!< @return ERROR_NONE    
   err_t setupPLL(si5351PLL_t pll, uint8_t mult, uint32_t num,
                  uint32_t denom);                   //!< @return ERROR_NONE
   err_t setupPLLInt(si5351PLL_t pll, uint8_t mult); //!< @return ERROR_NONE
